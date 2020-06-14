@@ -22,6 +22,6 @@ firebase.initializeApp(firebaseConfig);
 firebase.analytics();
 
 ReactDOM.render(
-  <App />,
+  <App/>,
   document.getElementById('notes-container')
 );
