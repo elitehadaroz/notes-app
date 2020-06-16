@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import './App.css';
+import sidebar from './sidebar/sidebar';
+import sidebarComponenet from './sidebar/sidebar';
+import EditorComponent from './editor/editor';
 
 const firebase = require('firebase');
 
@@ -15,8 +18,10 @@ class App extends Component {
   }
   render() {
     return (
-      <div>Hello World 
-      </div>
+     <div calssNeame = "app-container">
+       <SidebarComponenet></SidebarComponenet>
+       <EditorComponent></EditorComponent>
+     </div>
     );
   }
 
