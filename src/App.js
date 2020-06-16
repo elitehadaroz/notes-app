@@ -1,21 +1,36 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 
+const firebase = require('firebase');
+
 class App extends Component {
+
+  constructor() {
+    super();
+    this.state =  {
+      selectedNoteIndex: null,
+      selectedNote: null,
+      notes: null
+    };
+  }
   render() {
     return (
-      <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
-        </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+      <div>Hello World 
       </div>
     );
   }
+
+  componentDidMount = () => {
+    firebase.firestore().collection('notes').onSnapshot(serverUpdate => {
+      const notes = serverUpdate.docs.map(_doc => {
+        const data = _doc.data();
+        data['id'] = _doc.id;
+        return data;
+      });
+      console.log(notes);
+      this.setState({notes: notes});
+    });
+  }  
 }
 
 export default App;
