@@ -9,7 +9,7 @@ import { removeHTMLTags } from '../helpers';
 
 class SidebarItemComponent extends React.Component {
 
-    constructor(){
+    constructor() {
         super();
     }
 

@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import sidebar from './sidebar/sidebar';
-import sidebarComponenet from './sidebar/sidebar';
+import SidebarComponenet from './sidebar/sidebar';
 import EditorComponent from './editor/editor';
 
 const firebase = require('firebase');
@@ -10,7 +9,7 @@ class App extends Component {
 
   constructor() {
     super();
-    this.state =  {
+    this.state = {
       selectedNoteIndex: null,
       selectedNote: null,
       notes: null
