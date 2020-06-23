@@ -11,7 +11,14 @@ class EditorComponent extends React.Component {
     }
 
     render() {
-        return(<div>Hello from the editor</div>);
+
+        const { classes } = this.props;
+
+        return(
+        <div className={classes.editorContainer}>
+            <ReactQuill></ReactQuill>
+        </div>
+        );
     }
 
 }
