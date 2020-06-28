@@ -8,6 +8,11 @@ import styles from './styles';
 class EditorComponent extends React.Component {
     constructor() {
         super();
+        this.state = {
+            text: '',
+            title: '',
+            id: ''
+        };
     }
 
     render() {
@@ -15,18 +20,18 @@ class EditorComponent extends React.Component {
         const { classes } = this.props;
 
         return(
-        <div className={classes.editorContainer}>
-            <ReactQuill
-                value={this.state.text}
-                onChange={this.updateBody}>
-            </ReactQuill>
-        </div>
+            <div className={classes.editorContainer}>
+                <ReactQuill
+                    value={this.state.text}
+                    onChange={this.updateBody}>
+                </ReactQuill>
+            </div>
         );
     }
 
     updateBody = async(val) => {
         await this.setState({text: val});
-        this.updateBody();
+        this.update();
     };
 
     update = debounce(() => {
@@ -35,5 +40,4 @@ class EditorComponent extends React.Component {
         //come back later
     }, 1500);
 }
-
 export default withStyles(styles)(EditorComponent);
