@@ -52,7 +52,7 @@ class SidebarComponent extends React.Component {
   }
 
   updateTitle = (txt) => {
-    console.log('UPDATE TITLE: ', txt);
+    this.setState({ title: txt});
   }
 
   newNote = () => {
