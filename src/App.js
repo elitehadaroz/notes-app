@@ -18,8 +18,12 @@ class App extends Component {
   render() {
     return (
      <div calssNeame = "app-container">
-       <SidebarComponenet></SidebarComponenet>
-       <EditorComponent></EditorComponent>
+      <SidebarComponenet
+        selectedNoteIndex ={this.state.selectedNoteIndex}
+        notes={this.state.notes}>
+      </SidebarComponenet>
+
+      <EditorComponent></EditorComponent>
      </div>
     );
   }
