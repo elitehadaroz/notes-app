@@ -23,14 +23,29 @@ class SidebarComponent extends React.Component {
       <Button
       onClick={this.newNoteBtnClick}
       className={classes.newNoteBtn}>
-        New Note
+        {this.state.addingNote ? 'Cancel' : 'New Note'}
       </Button>
+      {
+        this.state.addingNote ? 
+        <div>
+         <input type='text'
+         className={classes.newNoteInput}
+         placeholder='Enter note title'
+         onKeyUp={(e) => this.updateTitle(e.target.value)}></input> 
+        </div> :
+        null
+      }
     </div>
     );
   }
 
   newNoteBtnClick = () => {
     console.log('NEW NOTE BTN CLICKED')
+    this.setState({ title: null, addingNote: this.state.addingNote}); //if addingNote equal to false > bacome true, else become false.
+  }
+
+  updateTitle = (txt) => {
+    console.log('UPDATE TITLE: ', txt);
   }
 }
 
