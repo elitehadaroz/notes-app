@@ -41,7 +41,7 @@ class SidebarComponent extends React.Component {
 
   newNoteBtnClick = () => {
     console.log('NEW NOTE BTN CLICKED')
-    this.setState({ title: null, addingNote: this.state.addingNote}); //if addingNote equal to false > bacome true, else become false.
+    this.setState({ title: null, addingNote: !this.state.addingNote}); //if addingNote equal to false > bacome true, else become false.
   }
 
   updateTitle = (txt) => {
