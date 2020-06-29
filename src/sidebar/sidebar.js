@@ -18,32 +18,57 @@ class SidebarComponent extends React.Component {
 
     const { notes, classes, selectedNoteIndex} = this.props;
     
-    return(
-    <div className={classes.sidebarContainer}>
-      <Button
-      onClick={this.newNoteBtnClick}
-      className={classes.newNoteBtn}>
-        {this.state.addingNote ? 'Cancel' : 'New Note'}
-      </Button>
-      {
-        this.state.addingNote ? 
-        <div>
-          <input type='text'
-            className={classes.newNoteInput}
-            placeholder='Enter note title'
-            onKeyUp={(e) => this.updateTitle(e.target.value)}>
-          </input>
+    if(notes){ //first time calling sidebarContainer notes will be null so we need to check first
+      return(
+        <div className={classes.sidebarContainer}>
           <Button
-            className={classes.newNoteSubmitBtn}
-            onClick={this.newNote}>
-              Submit Note
-
+          onClick={this.newNoteBtnClick}
+          className={classes.newNoteBtn}>
+            {this.state.addingNote ? 'Cancel' : 'New Note'}
           </Button>
-        </div> :
-        null
-      }
-    </div>
-    );
+          {
+            this.state.addingNote ? 
+            <div>
+              <input type='text'
+                className={classes.newNoteInput}
+                placeholder='Enter note title'
+                onKeyUp={(e) => this.updateTitle(e.target.value)}>
+              </input>
+              <Button
+                className={classes.newNoteSubmitBtn}
+                onClick={this.newNote}>
+                  Submit Note
+    
+              </Button>
+            </div> :
+            null
+          }
+    
+          <List>
+            {
+              notes.map((_note, _index) => {
+                return(
+                  //for each note we create side bar item:
+                  <div key={_index}> 
+                    <SidebarItemComponent
+                      _note={_note}
+                      _index={_index}
+                      selectedNoteIndex={selectedNoteIndex}
+                      selectNote={this.selectNote}
+                      deleteNote={this.deleteNote}>
+                    </SidebarItemComponent>
+                    <Divider></Divider>
+    
+                  </div>
+                )
+              })
+            }
+          </List>
+        </div>
+        );
+    } else {
+      return(<div></div>)
+    }
   }
 
   newNoteBtnClick = () => {
@@ -57,6 +82,14 @@ class SidebarComponent extends React.Component {
 
   newNote = () => {
     console.log(this.state);
+  }
+
+  selectNote = () => {
+    console.log('select note')
+  }
+
+  deleteNote = () => {
+    console.log('delete note')
   }
 }
 
