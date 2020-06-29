@@ -27,12 +27,13 @@ class SidebarItemComponent extends React.Component {
 
                                     //note body is the entire text of the note - can be a massive string,
                                     //so will take 30 first char from note text to show on the side bar:
-                                    secondary={removeHTMLTags(_note.body.substring(0, 30)) + '...'} 
-                                    > 
-
+                                    secondary={removeHTMLTags(_note.body.substring(0, 30)) + '...'}> 
                                 </ListItemText>
-                            
                         </div>
+                        <DeleteIcon
+                            onClick={() => this.delteNote(_note)}
+                            className={classes.deleteIcon}>
+                        </DeleteIcon>
 
                 </ListItem>
             </div>
