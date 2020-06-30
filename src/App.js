@@ -17,7 +17,7 @@ class App extends Component {
   }
   render() {
     return (
-     <div calssNeame = "app-container">
+     <div className = "app-container">
       <SidebarComponenet
         selectedNoteIndex ={this.state.selectedNoteIndex}
         notes={this.state.notes}
