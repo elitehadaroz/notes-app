@@ -32,7 +32,7 @@ class App extends Component {
         selectedNote={this.state.selectedNote}
         selectedNoteIndex={this.state.selectedNoteIndex}
         notes={this.state.notes}
-        noteUpdate={this.state.noteUpdate}>
+        noteUpdate={this.noteUpdate}>
       </EditorComponent> :
       null
       }
@@ -56,7 +56,15 @@ class App extends Component {
   selectNote = (note, index) => this.setState({ selectedNoteIndex: index, selectedNote: note });
 
   noteUpdate = (id, noteObj) => {
-    console.log(id, noteObj);
+    firebase
+    .firestore()
+    .collection('notes')
+    .doc(id)
+    .update({
+      title: noteObj.title,
+      body: noteObj.body,
+      timestamp: firebase.firestore.FieldValue.serverTimestamp() //firebase function that will generate a timestamp for us on the server
+     });
   }
 }
 
