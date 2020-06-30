@@ -81,8 +81,8 @@ class SidebarComponent extends React.Component {
   }
 
   newNote = () => {
-    this.props.newNote(this.state.title);
-    this.setState({title: null, addingNote: false});
+    this.props.newNote(this.state.title); //intalize new note title
+    this.setState({title: null, addingNote: false}); // reset
   }
 
   selectNote = (n, i) => {
