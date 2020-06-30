@@ -26,7 +26,16 @@ class App extends Component {
         newNote={this.newNote}>
       </SidebarComponenet>
 
-      <EditorComponent></EditorComponent>
+      {
+        this.state.selectedNote ? //if we dont have a selected note we dont want to render the editor component
+        <EditorComponent
+        selectedNote={this.state.selectedNote}
+        selectedNoteIndex={this.state.selectedNoteIndex}
+        notes={this.state.notes}>
+      </EditorComponent> :
+      null
+      }
+
      </div>
     );
   }
