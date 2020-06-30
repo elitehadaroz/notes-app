@@ -91,9 +91,9 @@ class App extends Component {
 
   deleteNote = async (note) => {
     const noteIndex = this.state.notes.indexOf(note);
-    await this.setState({notes: this.state.notes.filter(note => _note !== note)}); //removing the note that we deleting from the notes state
+    await this.setState({notes: this.state.notes.filter(note => _note !== note)}); //set notes state to the note we want to delete
     if(this.state.selectedNoteIndex === noteIndex) {
-      this.setState({ selectedNoteIndex: null, selectNote: null });
+      this.setState({ selectedNoteIndex: null, selectNote: null }); //removing the note that we deleting from the notes state
     } else {
       this.state.notes.length > 1 ?
       this.selectNote(this.state.notes[this.state.selectedNoteIndex - 1], this.state.selectedNoteIndex - 1) : // taking selectedNoteIndex - 1, because we already delete one note from note array
