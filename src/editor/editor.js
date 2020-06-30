@@ -53,7 +53,10 @@ class EditorComponent extends React.Component {
     };
 
     update = debounce(() => {
-        this.props.not
+        this.props.noteUpdate(this.state.id, {
+            title: this.state.title,
+            body: this.state.text
+        })
  
         //come back later
     }, 1500);
