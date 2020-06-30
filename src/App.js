@@ -86,7 +86,26 @@ class App extends Component {
       const newID = newFromDB.id; // we'll need for access to id from firebase
       await this.setState({ notes: [...this.state.notes, note] }); // updating the notes array with what is already in notes + the new note
       const newNoteIndex = this.state.notes.indexOf(this.state.notes.filter(_note => _note.id === newID)[0]) //filter function will return array of the note whoes id equal to newID
-      this.setState({ selectNote: this.state.notes[newNoteIndex], selectedNoteIndex: newNoteIndex}); //select note by index from all notes
+      this.setState({ selectNote: this.state.notes[newNoteIndex], selectedNoteIndex: newNoteIndex}); //select note by index from all notes to show in editor app
+  }
+
+  deleteNote =  (note) => {
+    const noteIndex = this.state.notes.indexOf(note);
+
+    if(this.state.selectedNoteIndex === noteIndex) {
+      this.setState({ selectedNoteIndex: null, selectNote: null });
+    } else {
+      this.state.notes.length > 1 ?
+      this.selectNote(this.state.notes[this.state.selectedNoteIndex - 1], this.state.selectedNoteIndex - 1) : // taking selectedNoteIndex - 1, because we already delete one note from note array
+      this.setState({ selectedNoteIndex: null, selectNote: null });
+    }
+
+    // delete specific note from firebase:
+    firebase
+      .firestore()
+      .collection('notes')
+      .doc(note.id)
+      .delete();
   }
 }
 
