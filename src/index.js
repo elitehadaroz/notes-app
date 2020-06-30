@@ -25,3 +25,6 @@ ReactDOM.render(
   <App/>,
   document.getElementById('notes-container')
 );
+
+//makes app work offline and load faster:
+serviceWorker.register();
