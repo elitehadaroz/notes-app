@@ -23,7 +23,7 @@ class EditorComponent extends React.Component {
         });
     }
 
-    componentDidUpdate = () => {
+    componentDidUpdate = () => { // when another note is selected by user - we want to change the the selected fields in app
         if(this.props.selectedNote.id !== this.state.id) {
             this.setState({
                 text: this.props.selectedNote.body,
