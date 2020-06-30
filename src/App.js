@@ -20,7 +20,10 @@ class App extends Component {
      <div calssNeame = "app-container">
       <SidebarComponenet
         selectedNoteIndex ={this.state.selectedNoteIndex}
-        notes={this.state.notes}>
+        notes={this.state.notes}
+        deleteNote={this.deleteNote}
+        selectNote={this.selectNote}
+        newNote={this.newNote}>
       </SidebarComponenet>
 
       <EditorComponent></EditorComponent>
@@ -38,7 +41,9 @@ class App extends Component {
       console.log(notes);
       this.setState({notes: notes});
     });
-  }  
+  }
+  
+  selectNote = (note, index) => this.setState({ selectedNoteIndex: index, selectedNote: note });
 }
 
 export default App;
