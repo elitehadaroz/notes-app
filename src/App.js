@@ -89,9 +89,9 @@ class App extends Component {
       this.setState({ selectNote: this.state.notes[newNoteIndex], selectedNoteIndex: newNoteIndex}); //select note by index from all notes to show in editor app
   }
 
-  deleteNote =  (note) => {
+  deleteNote = async (note) => {
     const noteIndex = this.state.notes.indexOf(note);
-
+    await this.setState({notes: this.state.notes.filter(note => _note !== note)});
     if(this.state.selectedNoteIndex === noteIndex) {
       this.setState({ selectedNoteIndex: null, selectNote: null });
     } else {
