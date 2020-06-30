@@ -67,6 +67,7 @@ class App extends Component {
      });
   }
 
+  //create new note when user click on new note btn, and add it to database
   newNote = async (title) => {
     const note = {
       title: title,
@@ -84,8 +85,8 @@ class App extends Component {
 
       const newID = newFromDB.id; // we'll need for access to id from firebase
       await this.setState({ notes: [...this.state.notes, note] }); // updating the notes array with what is already in notes + the new note
-      const newNoteIndex = this.state.notes.indexOf(this.state.notes.filter(_note => _note.id === newID)[0]) //filter will return array of the note whoes id equal to newID
-      this.setState({ selectNote: this.state.notes[newNoteIndex], selectedNoteIndex: newNoteIndex});
+      const newNoteIndex = this.state.notes.indexOf(this.state.notes.filter(_note => _note.id === newID)[0]) //filter function will return array of the note whoes id equal to newID
+      this.setState({ selectNote: this.state.notes[newNoteIndex], selectedNoteIndex: newNoteIndex}); //select note by index from all notes
   }
 }
 
