@@ -53,7 +53,7 @@ class EditorComponent extends React.Component {
     };
 
     update = debounce(() => {
-        console.log('UPDATING DATABASE');
+        this.props.not
  
         //come back later
     }, 1500);
