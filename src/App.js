@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import SidebarComponenet from './sidebar/sidebar';
 import EditorComponent from './editor/editor';
+import editor from './editor/editor';
 
 const firebase = require('firebase');
 
@@ -74,6 +75,8 @@ class App extends Component {
       body: ''
     };
 
+    
+    
     const newFromDB = await firebase
       .firestore()
       .collection('notes')
@@ -97,7 +100,8 @@ class App extends Component {
     } else {
       this.state.notes.length > 1 ?
       this.selectNote(this.state.notes[this.state.selectedNoteIndex - 1], this.state.selectedNoteIndex - 1) : // taking selectedNoteIndex - 1, because we already delete one note from note array
-      this.setState({ selectedNoteIndex: null, selectedNote: null });
+      this.setState({ selectedNoteIndex: noteIndex, selectedNote: note});
+      
     }
 
     // delete specific note from firebase:
