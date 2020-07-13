@@ -6,11 +6,7 @@
 A react web app that showes and save the user notes, using firebase database.
 The user can add, delete, and edit hes notes from the app.
 
-<img src="1.png" width=500>
-<img src="2.png" width=500>
-<img src="3.png" width=500>
-<img src="4.png" width=500>
-<img src="5.png" width=500>
-<img src="6.png" width=500>
-<img src="7.png" width=500>
-<img src="8.png" width=500>
+<img src="1.png" width=500> <img src="2.png" width=500>
+<img src="3.png" width=500> <img src="4.png" width=500>
+<img src="5.png" width=500> <img src="6.png" width=500>
+<img src="7.png" width=500> <img src="8.png" width=500>
